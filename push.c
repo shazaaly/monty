@@ -4,12 +4,12 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	char *arg = col.arg;
 	int value;
-	stack_t *new_node;
+	stack_t *new_node = NULL;
 
 	if (!arg)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		/* free_stack(*stack); */
+		free_stack(stack);
 		free(col.line);
 		fclose(col.file);
 		exit(EXIT_FAILURE);
@@ -20,7 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (value == 0 && col.arg[0] == '0')
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-	/*	free_stack(*stack);  to be done */
+		free_stack(stack);
 		free(col.line);
 		fclose(col.file);
 		exit(EXIT_FAILURE);
@@ -31,7 +31,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		 /* free_stack(*stack); to be done */
+		free_stack(stack);
 		free(col.line);
 		fclose(col.file);
 		exit(EXIT_FAILURE);

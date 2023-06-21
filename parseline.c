@@ -9,7 +9,7 @@
 */
 void parse_line(char *line, char **opcode, char **arg)
 {
-	char *token;
+	char *token = NULL;
 	int len;
 	/*skip leading spaces*/
 	while (*line == ' ')
@@ -21,8 +21,7 @@ void parse_line(char *line, char **opcode, char **arg)
 	if (token == NULL)
 	{
 		*opcode = NULL;
-		col.arg = NULL;
-		free(line);
+		*arg = NULL;
 		return;
 	}
 	*opcode = token;
@@ -31,8 +30,7 @@ void parse_line(char *line, char **opcode, char **arg)
 	token = strtok(NULL, " \t\n");
 	if (token == NULL)
 	{
-		col.arg = NULL;
-		free(line);
+		*arg = NULL;
 		return;
 	}
 	col.arg = token;
@@ -43,5 +41,8 @@ void parse_line(char *line, char **opcode, char **arg)
         (col.arg)[len - 1] = '\0';
         len--;
     }
+	free(line);
+	free(token);
+
 
 }

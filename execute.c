@@ -1,10 +1,6 @@
-
 #include "monty.h"
 
-
-
-
-int execute(char *opcode, unsigned int line_number, stack_t **stack, FILE *file)
+int execute(char *opcode, unsigned int line_number, stack_t **stack)
 {
 	instruction_t opcodes[] = {
 		{"push", push}
@@ -29,10 +25,9 @@ int execute(char *opcode, unsigned int line_number, stack_t **stack, FILE *file)
 	if (!found)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-		 /* free_stack(*stack); to be done */
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
-	fclose(file);
 	return (1);
 }

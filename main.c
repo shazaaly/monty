@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	filename = argv[1];
 	col.file = fopen(filename, "r");
 
-	if (col.file == NULL)
+	if (!col.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
@@ -40,12 +40,22 @@ int main(int argc, char *argv[])
 		}
 		col.line = line;
 	    parse_line(line, &opcode, &arg);
-		execute(opcode, line_number, &stack, col.file);
-		free(line);
-		line = NULL;
-		len = 0;
+		if (bytes_read > 0)
+		{
+			execute(opcode, line_number, &stack);
+		}
+		else
+		{
+			fprintf(stderr, "USAGE: monty file\n");
+			free(line);
+			fclose(col.file);
+			free_stack(&stack);
+			exit(EXIT_FAILURE);
+		}
+
 	}
 	fclose(col.file);
+	free_stack(&stack);
 	return (0);
 }
 
