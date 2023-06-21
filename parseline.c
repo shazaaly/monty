@@ -1,5 +1,12 @@
 #include "monty.h"
-
+/**
+* parse_line - Parses a line of input into opcode and argument
+* @line: The line of input to parse
+* @opcode: Pointer to store the extracted opcode
+* @arg: Pointer to store the extracted argument
+* Description: This function parses a line of input and extracts the opcode
+* Return:void
+*/
 void parse_line(char *line, char **opcode, char **arg)
 {
 	char *token;
