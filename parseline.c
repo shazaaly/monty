@@ -22,6 +22,7 @@ void parse_line(char *line, char **opcode, char **arg)
 	{
 		*opcode = NULL;
 		col.arg = NULL;
+		free(line);
 		return;
 	}
 	*opcode = token;
@@ -31,6 +32,7 @@ void parse_line(char *line, char **opcode, char **arg)
 	if (token == NULL)
 	{
 		col.arg = NULL;
+		free(line);
 		return;
 	}
 	col.arg = token;
