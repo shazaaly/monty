@@ -21,6 +21,5 @@ stack_t *push_stack(stack_t **stack, int value)
 		new_node->next = NULL;
 
 	*stack = new_node;
-
 	return (new_node);
 }

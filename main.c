@@ -7,7 +7,7 @@
 */
 int main(int argc, char *argv[])
 {
-	char *filename = argv[1];
+	char *filename;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t bytes_read;
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	filename = argv[1];
 	col.file = fopen(filename, "r");
 
 	if (col.file == NULL)
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	/*read line*/
-	while (bytes_read = getline(&line, &len, file) != -1)
+	while ((bytes_read = getline(&line, &len, col.file)) != -1)
 	{
 		line_number++;
 		if (line[len - 1] == '\n')
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
 		line = NULL;
 		len = 0;
 	}
-	fclose(file);
+	fclose(col.file);
 	return (0);
 }
 
