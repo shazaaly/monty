@@ -9,8 +9,10 @@
 */
 void parse_line(char *line, char **opcode, char **arg)
 {
+	int len = 0;
 	char *token = NULL;
-	int len;
+	*opcode = NULL;
+	*arg = NULL;
 	/*skip leading spaces*/
 	while (*line == ' ')
 	{
@@ -43,6 +45,5 @@ void parse_line(char *line, char **opcode, char **arg)
     }
 	free(line);
 	free(token);
-
 
 }

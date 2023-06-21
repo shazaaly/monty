@@ -7,7 +7,9 @@ stack_t *push_stack(stack_t **stack, int value)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		return (NULL);
+		fprintf(stderr,"Error: malloc failed");
+		free_stack(stack);
+		exit(EXIT_FAILURE);
 	}
 	new_node->n = value;
 	new_node->prev = NULL; /*if empty stack*/

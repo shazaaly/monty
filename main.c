@@ -9,12 +9,13 @@
 col_t col = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
-	char *filename;
+	char *filename = NULL;
 	char *line = NULL;
 	size_t len = 0;
 	int bytes_read;
 	int line_number = 0;
-	char *opcode, *arg;
+	char *opcode = NULL;
+	char *arg = NULL;
     stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -38,8 +39,15 @@ int main(int argc, char *argv[])
 		{
 			line[len - 1] = '\0';
 		}
-		col.line = line;
-	    parse_line(line, &opcode, &arg);
+		if (line)
+		{
+			parse_line(line, &opcode, &arg);
+		}
+		else
+		{
+			free(line);
+		}
+
 		if (bytes_read > 0)
 		{
 			execute(opcode, line_number, &stack);
