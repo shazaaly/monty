@@ -2,6 +2,11 @@
 #define MONTY_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -40,8 +45,8 @@ typedef struct col_s
 
 extern col_t col;
 
-extern instruction_t opcodes[];
-int execute(char *opcode, unsigned int line_number, stack_t **stack, File *file);
+int execute(char *opcode, unsigned int line_number, stack_t **stack, FILE *file);
 void parse_line(char *line, char **opcode, char **arg);
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number);
+stack_t *push_stack(stack_t **stack, int value);
 #endif

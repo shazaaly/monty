@@ -10,6 +10,7 @@
 void parse_line(char *line, char **opcode, char **arg)
 {
 	char *token;
+	int len;
 	/*skip leading spaces*/
 	while (*line == ' ')
 	{
@@ -33,16 +34,12 @@ void parse_line(char *line, char **opcode, char **arg)
 		return;
 	}
 	col.arg = token;
-	/* remove spaces from arg str*/
-	while (*token != '\0')
-	{
-		*token++;
-	}
-	/*moving backwards "hello    \t\n" */
-	while (*(--token) == ' ')
-	{
-		*token = '\0';
-
-	}
+    /* Remove trailing spaces from arg */
+    len = strlen(col.arg);
+    while (len > 0 && isspace((*arg)[len - 1]))
+    {
+        (col.arg)[len - 1] = '\0';
+        len--;
+    }
 
 }

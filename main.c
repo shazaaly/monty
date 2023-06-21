@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	char *filename;
 	char *line = NULL;
 	size_t len = 0;
-	ssize_t bytes_read;
+	int bytes_read;
 	int line_number = 0;
 	char *opcode, *arg;
     stack_t *stack = NULL;
