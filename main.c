@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	FILE *file = fopen(filename, "r");
+	col.file = fopen(filename, "r");
 
-	if (file == NULL)
+	if (col.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
@@ -35,8 +35,9 @@ int main(int argc, char *argv[])
 		{
 			line[len - 1] = '\0';
 		}
+		col.line = line;
 	    parse_line(line, &opcode, &arg);
-		execute(opcode, line_number, &stack);
+		execute(opcode, line_number, &stack, col.file);
 		free(line);
 		line = NULL;
 		len = 0;

@@ -20,7 +20,7 @@ instruction_t opcodes[] = {
     {"queue", queue},
     {NULL, NULL}
 };
-int execute(char *opcode, unsigned int line_number, stack_t **stack, File *file)
+int execute(char *opcode, unsigned int line_number, stack_t **stack, FILE *file)
 {
 	unsigned int found = 0;
 	int i = 0;

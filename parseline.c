@@ -13,7 +13,7 @@ void parse_line(char *line, char **opcode, char **arg)
 	if (token == NULL)
 	{
 		*opcode = NULL;
-		*arg = NULL;
+		col.arg = NULL;
 		return;
 	}
 	*opcode = token;
@@ -22,10 +22,10 @@ void parse_line(char *line, char **opcode, char **arg)
 	token = strtok(NULL, " \t\n");
 	if (token == NULL)
 	{
-		*arg = NULL;
+		col.arg = NULL;
 		return;
 	}
-	*arg = token;
+	col.arg = token;
 	/* remove spaces from arg str*/
 	while (*token != '\0')
 	{
