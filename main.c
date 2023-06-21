@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	ssize_t bytes_read;
 	int line_number = 0;
-	char *command = NULL;
+	char *opcode, *arg;
+    stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -32,10 +33,10 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (line[len - 1] == '\n')
 		{
-			line[len - 1] = '\0'
+			line[len - 1] = '\0';
 		}
-		command = line;
-		excute(command);
+	    parse_line(line, &opcode, &arg);
+		execute(opcode, line_number, &stack);
 		free(line);
 		line = NULL;
 		len = 0;
