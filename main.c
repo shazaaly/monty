@@ -1,10 +1,12 @@
 #include "monty.h"
+
 /**
 * main - Entry point of the Monty interpreter
 * @argc: Number of command-line arguments
 * @argv: Array of command-line arguments
 * Return: 0 on success, or EXIT_FAILURE on failure
 */
+col_t col = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
 	char *filename;
