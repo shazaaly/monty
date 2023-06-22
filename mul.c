@@ -16,7 +16,7 @@ void mul(stack_t **top, unsigned int line_number)
 		free(col.line);
 		exit(EXIT_FAILURE);
 	}
-	res = (*top)->n * (*top)->next->n;
+	res = ((*top)->n) * ((*top)->next->n);
 	tmp = *top;
 	*top = (*top)->next; /*new top is sec node*/
 	(*top)->prev = NULL;
