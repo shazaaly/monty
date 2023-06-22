@@ -14,7 +14,7 @@ void sub(stack_t **top, unsigned int line_number)
 	res = (*top)->n - (*top)->next->n; /*subtract*/
 	tmp = *top;
 	*top = (*top)->next; /*new top is sec node*/
-	(*top)->next->prev = NULL;
+	(*top)->prev = NULL;
 	(*top)->n = res;
 	free(tmp);
 
