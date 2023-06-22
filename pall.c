@@ -1,13 +1,16 @@
 #include "monty.h"
 
-void pall(stack_t *top, unsigned int line_number)
+void pall(stack_t **head, int line_number)
 {
-	stack_t *node = top;
-	while (node != NULL)
-	{
-		printf("%d", node->n);
-		node = node->prev;
-	}
-	printf('\n');
+	stack_t *h;
+	(void)line_number;
 
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
 }
