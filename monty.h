@@ -54,4 +54,5 @@ void free_stack(stack_t **stack);
 void pall(stack_t **head, unsigned int line_number);
 void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
+void swap(stack_t **top, unsigned int line_number);
 #endif

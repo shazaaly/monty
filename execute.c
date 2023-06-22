@@ -5,7 +5,8 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
-		{"pop", pop}
+		{"pop", pop},
+		{"swap", swap}
 	};
 	int i = 0;
 	int found = 0;
