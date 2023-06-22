@@ -19,9 +19,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcode and its function
@@ -33,15 +33,20 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+/**
+* struct col_s - Struct for holding context data.
+* @arg:  Argument string passed to Monty program
+* @line: Current line being processed from Monty file
+* @file: File pointer to Monty file being interpreted
+*/
 typedef struct col_s
 {
-    char *arg;
-    char *line;
-    FILE *file;
+	char *arg;
+	char *line;
+	FILE *file;
 } col_t;
 
 extern col_t col;
@@ -56,7 +61,7 @@ void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
 void swap(stack_t **top, unsigned int line_number);
 void add(stack_t **top, unsigned int line_number);
-void nop(stack_t**top, unsigned int line_number);
+void nop(stack_t **top, unsigned int line_number);
 void sub(stack_t **top, unsigned int line_number);
 void mul(stack_t **top, unsigned int line_number);
 #endif
