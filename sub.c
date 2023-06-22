@@ -1,10 +1,15 @@
 #include "monty.h"
+/**
+* sub - Subtract the top element of the stack from the second top element.
+* @top: Double pointer to the top of the stack.
+* @line_number: Line number of the current operation.
+*/
 void sub(stack_t **top, unsigned int line_number)
 {
 	stack_t *tmp;
 	int res;
 
-	if (*top == NULL || (*top)->next == NULL )
+	if (*top == NULL || (*top)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		fclose(col.file);
