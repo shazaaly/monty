@@ -1,5 +1,9 @@
 #include "monty.h"
-
+/**
+* push - Adds a new element to the top of the stack.
+* @top: A pointer to the top of the stack.
+* @line_number: The line number of the instruction being executed.
+*/
 void push(stack_t **top, unsigned int line_number)
 {
 	int value;
