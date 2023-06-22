@@ -1,4 +1,11 @@
 #include "monty.h"
+/**
+* execute - Executes an opcode on a stack.
+* @line: The line containing the opcode to execute.
+* @line_number: The line number of the opcode in the input file.
+* @stack: A pointer to the top of the stack.
+* Return: 0 if the opcode is a comment or if the line is empty, 1 otherwise.
+*/
 int execute(char *line, unsigned int line_number, stack_t **stack)
 {
 	instruction_t opcodes[] = {
@@ -9,9 +16,8 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{"sub", sub}
-
-
+		{"sub", sub},
+		{NULL, NULL}
 	};
 	int i = 0;
 	int found = 0;
@@ -34,12 +40,10 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		}
 		i++;
 	}
-
 	if (found == 0)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
-
 	return (1);
 }
