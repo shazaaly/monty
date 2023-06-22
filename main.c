@@ -27,6 +27,13 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+    fseek(file, 0, SEEK_END);
+    if (ftell(file) == 0)
+    {
+        fprintf(stderr, "Error: File is empty\n");
+        exit(EXIT_FAILURE);
+    }
+    rewind(file);
 	while ((nread = getline(&line, &len, file)) != -1)
 	{
 		line_number++;
