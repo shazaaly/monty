@@ -8,19 +8,15 @@
  */
 void free_stack(stack_t **stack)
 {
-    stack_t *current, *temp;
-
-    if (stack == NULL || *stack == NULL)
-        return;
-
-    current = *stack;
-
+    stack_t *current = *stack;
+    stack_t *tmp = NULL; /* Initialize tmp to NULL */
     while (current != NULL)
     {
-        temp = current->next;
-        free(current);
-        current = temp;
-    }
+        tmp = current;
+        current = current->next;
+        free(tmp);
 
-    *stack = NULL;
+    }
+    *stack = NULL; /*Set the top of the stack to NULL */
+
 }

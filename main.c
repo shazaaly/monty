@@ -23,11 +23,13 @@ int main(int argc, char *argv[])
     }
 
     file = fopen(argv[1], "r");
+    col.file = file;
     if (file == NULL)
     {
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
+
 
     while ((nread = getline(&line, &len, file)) != -1)
     {
@@ -40,5 +42,6 @@ int main(int argc, char *argv[])
     free(line);
     fclose(file);
     exit(EXIT_SUCCESS);
+    return (0);
 }
 
