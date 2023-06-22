@@ -19,7 +19,7 @@ void push(stack_t **top, unsigned int line_number)
 	}
 	value = strtol(col.arg, &endptr, 10);
 
-	if (*endptr != '\0' || endptr == col.arg)
+	if (*endptr != '\0' || endptr == col.arg || value > INT_MAX || value < INT_MIN)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_stack(top);
