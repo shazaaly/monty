@@ -32,6 +32,7 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		return (0);
 	}
 	col.arg = strtok(NULL, " \t\n");
+	/* loop all ops to compare opcode extracted */
 	while (opcodes[i].opcode != NULL && opcode != NULL)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
