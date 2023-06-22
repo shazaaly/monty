@@ -1,39 +1,26 @@
 #include "monty.h"
 
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **top, unsigned int line_number)
 {
-	char *arg = col.arg;
 	int value;
-	stack_t *new_node = NULL;
-
-	if (!arg)
+    char *endptr;
+	if (!col.arg || isspace(*col.arg))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_stack(stack);
+		free_stack(top);
 		free(col.line);
 		fclose(col.file);
 		exit(EXIT_FAILURE);
 	}
-
-	value = atoi(arg);
+    value = strtol(col.arg, &endptr, 10);
 	/* checks if the value returned by atoi is 0, and also checks if the first character of the argument string is not '0' */
-	if (value == 0 && col.arg[0] == '0')
+	if (*endptr != '\0' || endptr == col.arg)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_stack(stack);
+		free_stack(top);
 		free(col.line);
 		fclose(col.file);
 		exit(EXIT_FAILURE);
 	}
-
-	push_stack(stack, value);
-
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_stack(stack);
-		free(col.line);
-		fclose(col.file);
-		exit(EXIT_FAILURE);
-	}
+		push_stack(top, value);
 }
