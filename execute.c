@@ -16,8 +16,7 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{"sub", sub},
-		{NULL, NULL}
+		{"sub", sub}
 	};
 	int i = 0;
 	int found = 0;
