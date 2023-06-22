@@ -6,7 +6,6 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop}
-
 	};
 	int i = 0;
 	int found = 0;
