@@ -1,5 +1,9 @@
 #include "monty.h"
-
+/**
+* stack_mod- mod the second top element of the stack by the top element.
+* @top: Double pointer to the top of the stack.
+* @line_number: Line number of the current operation.
+*/
 void stack_mod(stack_t **top, unsigned int line_number)
 {
 	stack_t *tmp;
