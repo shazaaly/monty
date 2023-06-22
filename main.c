@@ -9,45 +9,36 @@
 col_t col = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
-	FILE *myfile;
-	char *filename = NULL;
-	char *line = NULL;
-	size_t len = 0;
-	int bytes_read;
-	unsigned int line_number = 0;
     stack_t *stack = NULL;
+    FILE *file;
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t nread;
+    unsigned int line_number = 0;
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	filename = argv[1];
-	myfile = fopen(filename, "r");
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
 
-	if (!myfile)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-	/*read line*/
-	while ((bytes_read = getline(&line, &len, myfile)) != -1)
-	{
-		line_number++;
-		if (line[len - 1] == '\n')
-		{
-			line[len - 1] = '\0';
-		}
-		if (bytes_read > 0)
-		{
-			execute(line, line_number, &stack, myfile);
-		}
-		free(line);
+    file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
 
-	}
-	fclose(myfile);
-	free_stack(&stack);
-	return (0);
+    while ((nread = getline(&line, &len, file)) != -1)
+    {
+        line_number++;
+        if (execute(line, line_number, &stack) == 0)
+            continue;
+    }
+
+    free_stack(&stack);
+    free(line);
+    fclose(file);
+    exit(EXIT_SUCCESS);
 }
-
 
