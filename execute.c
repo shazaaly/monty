@@ -18,6 +18,7 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 		{"nop", nop},
 		{"sub", sub},
 		{"mul", mul},
+		{"div", stack_div},
 		{NULL, NULL}
 	};
 	int i = 0;
