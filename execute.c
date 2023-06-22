@@ -25,7 +25,7 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 	char *opcode;
 
 	opcode = strtok(line, " \t\n");
-	if (!opcode || *opcode == '#')
+	if (!opcode || *opcode == '#' || opcode[0] == '#')
 	{
 		return (0);
 	}
