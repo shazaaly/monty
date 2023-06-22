@@ -1,0 +1,2 @@
+	(void)top;
+	(void)line_number;
