@@ -8,17 +8,8 @@ void mul(stack_t **top, unsigned int line_number)
 {
 	stack_t *tmp;
 	int res;
-	int len = 0;
 
-	tmp = *top;
-
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		len++;
-	}
-
-	if (*top == NULL || (*top)->next == NULL || len < 2)
+	if (*top == NULL || (*top)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		fclose(col.file);
@@ -26,7 +17,7 @@ void mul(stack_t **top, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	res = (*top)->n * (*top)->next->n;
-	/*tmp = *top;*/
+	tmp = *top;
 	*top = (*top)->next; /*new top is sec node*/
 	(*top)->prev = NULL;
 	(*top)->n = res;
