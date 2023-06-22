@@ -10,7 +10,7 @@
 void nop(stack_t**top, unsigned int line_number)
 {
 	/*(void) cast expression*/
-	*top = NULL;
-	line_number = 1;
-	line_number = line_number - 1;
+	(void)top;
+	(void)line_number;
+
 }
