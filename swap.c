@@ -8,16 +8,16 @@
 */
 void swap(stack_t **top, unsigned int line_number)
 {
-	stack_t tmp;
+	stack_t *tmp = *top;
 	int data;
 
 
-	if (*top == NULL || (*tmp)->next == NULL)
+	if (*top == NULL || tmp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short" , line_number);
 		free(col.line);
 		fclose(col.file);
-		free_stack(*top);
+		free_stack(top);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *top;
