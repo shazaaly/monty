@@ -46,10 +46,10 @@ typedef struct col_s
 
 extern col_t col;
 
-int execute(char *opcode, unsigned int line_number, stack_t **stack);
-void parse_line(char *line, char **opcode, char **arg);
+int execute(char *line, unsigned int line_number, stack_t **stack, FILE *file);
+/*void parse_line(char *line, char *opcode, char *arg); */
 void push(stack_t **stack, unsigned int line_number);
-stack_t *push_stack(stack_t **stack, int value);
+void push_stack(stack_t **stack, int value);
 void free_stack(stack_t **stack);
-void pall(stack_t **head, int line_number);
+void pall(stack_t **head, unsigned int line_number);
 #endif

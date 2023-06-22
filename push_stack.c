@@ -1,6 +1,6 @@
 #include "monty.h"
 
-stack_t *push_stack(stack_t **stack, int value)
+void push_stack(stack_t **stack, int value)
 {
 	stack_t *new_node;
 
@@ -23,5 +23,4 @@ stack_t *push_stack(stack_t **stack, int value)
 		new_node->next = NULL;
 
 	*stack = new_node;
-	return (new_node);
 }
