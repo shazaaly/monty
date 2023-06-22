@@ -4,7 +4,8 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint}
+		{"pint", pint},
+		{"pop", pop}
 
 	};
 	int i = 0;
