@@ -67,4 +67,5 @@ void sub(stack_t **top, unsigned int line_number);
 void mul(stack_t **top, unsigned int line_number);
 int is_integer(int num);
 void stack_div(stack_t **top, unsigned int line_number);
+void stack_mod(stack_t **top, unsigned int line_number);
 #endif
