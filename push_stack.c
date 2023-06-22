@@ -17,6 +17,7 @@ void push_stack(stack_t **top, int value)
 	}
 	new_node->n = value;
 	new_node->prev = NULL;
+	new_node->next = NULL; /*added*/
 	if (*top != NULL)
 	{
 		new_node->next = *top;
