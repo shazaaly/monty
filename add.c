@@ -7,7 +7,7 @@ void add(stack_t **top, unsigned int line_number)
 
 	if (*top == NULL || (*top)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free(col.line);
 		fclose(col.file);
 		free_stack(top);
