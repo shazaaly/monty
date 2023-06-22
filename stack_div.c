@@ -35,7 +35,6 @@ void stack_div(stack_t **top, unsigned int line_number)
 	if (*top != NULL)
 	{
 		(*top)->prev = NULL;
-
 	}
 	free(tmp);
 }
