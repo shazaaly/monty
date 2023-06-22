@@ -26,13 +26,15 @@ int execute(char *line, unsigned int line_number, stack_t **stack)
 	int found = 0;
 	char *opcode;
 
+	if (line == NULL || *line == '#' || line[0] == '#')
+		return (0);
+
 	opcode = strtok(line, " \t\n");
 	if (!opcode || *opcode == '#' || opcode[0] == '#')
 	{
 		return (0);
 	}
 	col.arg = strtok(NULL, " \t\n");
-	/* loop all ops to compare opcode extracted */
 	while (opcodes[i].opcode != NULL && opcode != NULL)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
