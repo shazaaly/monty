@@ -10,7 +10,7 @@ void pop(stack_t **top, unsigned int line_number)
 
 	if (*top == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack" , line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
 		free(col.line);
 		fclose(col.file);
 		free_stack(top);
