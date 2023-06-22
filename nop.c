@@ -7,7 +7,7 @@
 * Return: void
 */
 
-void nop(stack_t**top, unsigned int line_number)
+void nop(stack_t **top, unsigned int line_number)
 {
 	/*(void) cast expression*/
 	(void)top;
